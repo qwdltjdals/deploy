@@ -12,9 +12,9 @@ public class TestController {
     @Value("${client.address}") // yml에꺼 가져옴
     private String ClientAddress;
 
-    @CrossOrigin
+    @CrossOrigin(originPatterns = "*")
     @GetMapping("/test")
     public ResponseEntity<?> test() {
-        return ResponseEntity.ok(ClientAddress + "Hello, World!");
+        return ResponseEntity.ok(ClientAddress + " Hello, World!");
     }
 }
