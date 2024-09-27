@@ -31,3 +31,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+#이미지 만들기 - 이미지 이름
+      - name: Build Docker
+        run: docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/live_server
+#푸쉬하기 - 레포지토리 이름(보통 이미지 이름이랑 동일하게 지음), 버전
+      - name: Push DockerHub
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/live_server:lastest
